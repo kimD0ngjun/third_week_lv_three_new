@@ -1,6 +1,6 @@
 package com.jun.newacademy.service;
 
-import com.jun.newacademy.dto.UserSignUpRequestDto;
+import com.jun.newacademy.dto.userdto.UserSignUpRequestDto;
 import com.jun.newacademy.entity.user.User;
 import com.jun.newacademy.entity.user.UserAuthority;
 import com.jun.newacademy.repository.UserRepository;

@@ -1,4 +1,4 @@
-package com.jun.newacademy.dto;
+package com.jun.newacademy.dto.userdto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
