@@ -21,6 +21,7 @@ import java.io.IOException;
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     // OncePerRequestFilter -> HttpServletRequest / HttpServletResponse 받아 올 수 있음
+    // 강의 다시 한번 더 확인
 
     private final JwtUtil jwtUtil;
     private final UserDetailsServiceImpl userDetailsService;
@@ -31,21 +32,20 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        String tokenValue = jwtUtil.getTokenFromRequest(req);
+        String token = jwtUtil.getTokenFromRequest(request);
 
-        if (StringUtils.hasText(tokenValue)) {
-            // JWT 토큰 substring
-            tokenValue = jwtUtil.substringToken(tokenValue);
-            log.info(tokenValue);
+        if (StringUtils.hasText(token)) {
+            token = jwtUtil.substringToken(token); // 존맛탱 앞글자 싹둑
+            log.info(token);
 
-            if (!jwtUtil.validateToken(tokenValue)) {
+            if (!jwtUtil.validateToken(token)) {
                 log.error("Token Error");
                 return;
             }
 
-            Claims info = jwtUtil.getUserInfoFromToken(tokenValue);
+            Claims info = jwtUtil.getUserInfoFromToken(token);
 
             try {
                 setAuthentication(info.getSubject());
@@ -55,7 +55,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
             }
         }
 
-        filterChain.doFilter(req, res);
+        filterChain.doFilter(request, response);
     }
 
     // 인증 처리
