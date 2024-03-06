@@ -1,4 +1,4 @@
-package com.jun.newacademy.service;
+package com.jun.newacademy.service.userservice;
 
 import com.jun.newacademy.dto.userdto.UserSignUpRequestDto;
 import com.jun.newacademy.entity.user.User;
