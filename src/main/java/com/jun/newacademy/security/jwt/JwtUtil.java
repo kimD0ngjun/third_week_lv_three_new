@@ -1,4 +1,4 @@
-package com.jun.newacademy.security;
+package com.jun.newacademy.security.jwt;
 
 import com.jun.newacademy.entity.user.UserAuthority;
 import io.jsonwebtoken.*;

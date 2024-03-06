@@ -1,5 +1,6 @@
-package com.jun.newacademy.entity.user;
+package com.jun.newacademy.security.usersecurity;
 
+import com.jun.newacademy.entity.user.User;
 import com.jun.newacademy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

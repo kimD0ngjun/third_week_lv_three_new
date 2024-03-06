@@ -1,9 +1,9 @@
 package com.jun.newacademy.config;
 
-import com.jun.newacademy.entity.user.UserDetailsServiceImpl;
-import com.jun.newacademy.security.JwtAuthenticationFilter;
-import com.jun.newacademy.security.JwtAuthorizationFilter;
-import com.jun.newacademy.security.JwtUtil;
+import com.jun.newacademy.security.usersecurity.UserDetailsServiceImpl;
+import com.jun.newacademy.security.jwt.JwtAuthenticationFilter;
+import com.jun.newacademy.security.jwt.JwtAuthorizationFilter;
+import com.jun.newacademy.security.jwt.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,9 +1,9 @@
-package com.jun.newacademy.security;
+package com.jun.newacademy.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jun.newacademy.dto.userdto.UserLoginRequestDto;
 import com.jun.newacademy.entity.user.UserAuthority;
-import com.jun.newacademy.entity.user.UserDetailsImpl;
+import com.jun.newacademy.security.usersecurity.UserDetailsImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

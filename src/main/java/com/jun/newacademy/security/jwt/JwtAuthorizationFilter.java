@@ -1,6 +1,6 @@
-package com.jun.newacademy.security;
+package com.jun.newacademy.security.jwt;
 
-import com.jun.newacademy.entity.user.UserDetailsServiceImpl;
+import com.jun.newacademy.security.usersecurity.UserDetailsServiceImpl;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

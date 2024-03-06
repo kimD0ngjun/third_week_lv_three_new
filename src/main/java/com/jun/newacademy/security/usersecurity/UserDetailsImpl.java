@@ -1,5 +1,7 @@
-package com.jun.newacademy.entity.user;
+package com.jun.newacademy.security.usersecurity;
 
+import com.jun.newacademy.entity.user.User;
+import com.jun.newacademy.entity.user.UserAuthority;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

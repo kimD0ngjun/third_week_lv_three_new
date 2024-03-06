@@ -1,7 +1,7 @@
 package com.jun.newacademy.controller;
 
 import com.jun.newacademy.entity.user.User;
-import com.jun.newacademy.entity.user.UserDetailsImpl;
+import com.jun.newacademy.security.usersecurity.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
