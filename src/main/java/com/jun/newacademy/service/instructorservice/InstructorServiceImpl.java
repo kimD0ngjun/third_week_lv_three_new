@@ -18,6 +18,15 @@ public class InstructorServiceImpl implements InstructorService {
     private final InstructorRepository instructorRepository;
 
     @Override
+    @Transactional
+    public InstructorResponseDto save(InstructorRequestDto requestDto) {
+        Instructor instructor = new Instructor(requestDto);
+        instructorRepository.save(instructor);
+
+        return new InstructorResponseDto(instructor);
+    }
+
+    @Override
     public InstructorResponseDto find(Long id) {
         Optional<Instructor> instructorOptional = instructorRepository.findById(id);
 
