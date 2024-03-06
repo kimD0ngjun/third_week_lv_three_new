@@ -15,7 +15,7 @@ public enum UserAuthority {
     }
 
     public static class Role {
-        public static final String MANAGER = "ROLE_MANAGER";
-        public static final String STAFF = "ROLE_STAFF";
+        public static final String MANAGER = "MANAGER";
+        public static final String STAFF = "STAFF";
     }
 }
