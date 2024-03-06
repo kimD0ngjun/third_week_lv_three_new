@@ -1,6 +1,5 @@
 package com.jun.newacademy.entity;
 
-mport jakarta.persistence.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,9 +24,9 @@ public class User {
     private String department;
 
     @Column(nullable = false)
-    private String authority;
+    private UserAuthority authority;
 
-    public User(String email, String password, String department, String authority) {
+    public User(String email, String password, String department, UserAuthority authority) {
         this.email = email;
         this.password = password;
         this.department = department;
