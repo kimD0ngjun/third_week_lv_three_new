@@ -1,6 +1,6 @@
 package com.jun.newacademy.security;
 
-import com.jun.newacademy.entity.UserAuthority;
+import com.jun.newacademy.entity.user.UserAuthority;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;

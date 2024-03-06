@@ -1,4 +1,4 @@
-package com.jun.newacademy.entity;
+package com.jun.newacademy.entity.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

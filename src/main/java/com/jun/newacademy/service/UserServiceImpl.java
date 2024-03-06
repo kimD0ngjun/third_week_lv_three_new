@@ -1,8 +1,8 @@
 package com.jun.newacademy.service;
 
 import com.jun.newacademy.dto.UserSignUpRequestDto;
-import com.jun.newacademy.entity.User;
-import com.jun.newacademy.entity.UserAuthority;
+import com.jun.newacademy.entity.user.User;
+import com.jun.newacademy.entity.user.UserAuthority;
 import com.jun.newacademy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

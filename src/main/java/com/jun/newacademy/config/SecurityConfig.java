@@ -1,6 +1,6 @@
 package com.jun.newacademy.config;
 
-import com.jun.newacademy.entity.UserDetailsServiceImpl;
+import com.jun.newacademy.entity.user.UserDetailsServiceImpl;
 import com.jun.newacademy.security.JwtAuthenticationFilter;
 import com.jun.newacademy.security.JwtAuthorizationFilter;
 import com.jun.newacademy.security.JwtUtil;
