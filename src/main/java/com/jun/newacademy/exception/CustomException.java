@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class CustomException {
-    private int status;
     private String error;
     private String message;
 }

@@ -4,6 +4,7 @@ import com.jun.newacademy.dto.userdto.UserSignUpRequestDto;
 import com.jun.newacademy.entity.user.User;
 import com.jun.newacademy.entity.user.UserAuthority;
 import com.jun.newacademy.repository.UserRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public ResponseEntity<String> signUp(UserSignUpRequestDto requestDto) {
+    public ResponseEntity<String> signUp(@Valid UserSignUpRequestDto requestDto) {
         String email = requestDto.getEmail();
         String password = passwordEncoder.encode(requestDto.getPassword()); // 암호화 설정
         String department = requestDto.getDepartment();
