@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum CourseCategory {
-    MANAGER(CourseCategory.Subject.SPRING),
-    STAFF(CourseCategory.Subject.REACT),
+    SPRING(CourseCategory.Subject.SPRING),
+    REACT(CourseCategory.Subject.REACT),
     NODEJS(CourseCategory.Subject.NODEJS);
 
     private final String category;

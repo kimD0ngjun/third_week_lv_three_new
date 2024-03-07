@@ -3,7 +3,9 @@ package com.jun.newacademy.service.courseservice;
 import com.jun.newacademy.dto.coursedto.CourseRequestDto;
 import com.jun.newacademy.dto.coursedto.CourseResponseDto;
 import com.jun.newacademy.entity.course.Course;
+import com.jun.newacademy.entity.course.CourseCategory;
 import com.jun.newacademy.entity.instructor.Instructor;
+import com.jun.newacademy.entity.user.UserAuthority;
 import com.jun.newacademy.repository.CourseRepository;
 import com.jun.newacademy.repository.InstructorRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +32,21 @@ public class CourseServiceImpl implements CourseService {
 
         if (instructorOptional.isPresent()) {
             Instructor instructor = instructorOptional.get();
-            Course course = new Course(requestDto, instructor);
+
+            String category = requestDto.getCategory();
+
+            CourseCategory subject;
+            if (category.equals("스프링")) {
+                subject = CourseCategory.SPRING;
+            } else if (category.equals("노드js")) {
+                subject = CourseCategory.NODEJS;
+            } else if (category.equals("리액트")) {
+                subject = CourseCategory.REACT;
+            } else {
+                throw new IllegalArgumentException("유효하지 않은 과목입니다.");
+            }
+
+            Course course = new Course(requestDto, instructor, subject);
 
             courseRepository.save(course);
             return CourseResponseDto.fromEntity(course);
@@ -63,13 +79,25 @@ public class CourseServiceImpl implements CourseService {
             String title = requestDto.getTitle();
             String price = requestDto.getPrice();
             String syllabus = requestDto.getSyllabus();
-            String category = requestDto.getCategory();
             Instructor instructor = instructorOptional.get();
+
+            String category = requestDto.getCategory();
+
+            CourseCategory subject;
+            if (category.equals("스프링")) {
+                subject = CourseCategory.SPRING;
+            } else if (category.equals("노드js")) {
+                subject = CourseCategory.NODEJS;
+            } else if (category.equals("리액트")) {
+                subject = CourseCategory.REACT;
+            } else {
+                throw new IllegalArgumentException("유효하지 않은 과목입니다.");
+            }
 
             course.setTitle(title);
             course.setPrice(price);
             course.setSyllabus(syllabus);
-            course.setCategory(category);
+            course.setCategory(subject);
             course.setInstructor(instructor);
 
             return CourseResponseDto.fromEntity(course);

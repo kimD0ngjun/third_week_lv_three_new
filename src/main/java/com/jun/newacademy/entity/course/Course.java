@@ -28,17 +28,17 @@ public class Course extends CourseTimestamped {
     private String syllabus;
 
     @Column(nullable = false)
-    private String category;
+    private CourseCategory category;
 
     @ManyToOne
     @JoinColumn(name = "instructor_id", referencedColumnName = "instructor_id", nullable = false)
     private Instructor instructor;
 
-    public Course(CourseRequestDto requestDto, Instructor instructor) {
+    public Course(CourseRequestDto requestDto, Instructor instructor, CourseCategory category) {
         this.title = requestDto.getTitle();
         this.price = requestDto.getPrice();
         this.syllabus = requestDto.getSyllabus();
-        this.category = requestDto.getCategory();
+        this.category = category;
         this.instructor = instructor;
     }
 }
