@@ -33,13 +33,13 @@ public class CourseController {
         return courseService.update(id, requestDto);
     }
 
-    @GetMapping("/{category}")
+    @GetMapping("/category/{category}")
     public List<CourseResponseDto> findByCategory(@PathVariable String category) {
         return courseService.findByCategory(category);
     }
 
-    @GetMapping
-    public List<CourseResponseDto> findByInstructor(@RequestParam Long instructorId) {
+    @GetMapping("/instructor/{instructorId}")
+    public List<CourseResponseDto> findByInstructor(@PathVariable Long instructorId) {
         return courseService.findByInstructor(instructorId);
     }
 }
