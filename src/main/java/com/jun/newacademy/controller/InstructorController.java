@@ -2,9 +2,10 @@ package com.jun.newacademy.controller;
 
 import com.jun.newacademy.dto.instructordto.InstructorRequestDto;
 import com.jun.newacademy.dto.instructordto.InstructorResponseDto;
+import com.jun.newacademy.entity.user.UserAuthority;
 import com.jun.newacademy.service.instructorservice.InstructorService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class InstructorController {
         return instructorService.find(id);
     }
 
-    @PreAuthorize("hasAuthority('MANAGER')")
+    @Secured(UserAuthority.Role.MANAGER)
     @PutMapping("/{id}")
     @Transactional
     public InstructorResponseDto update(@PathVariable Long id, @RequestBody InstructorRequestDto requestDto) {

@@ -2,8 +2,10 @@ package com.jun.newacademy.controller;
 
 import com.jun.newacademy.dto.coursedto.CourseRequestDto;
 import com.jun.newacademy.dto.coursedto.CourseResponseDto;
+import com.jun.newacademy.entity.user.UserAuthority;
 import com.jun.newacademy.service.courseservice.CourseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +30,7 @@ public class CourseController {
         return courseService.findById(id);
     }
 
-    @PreAuthorize("hasAuthority('MANAGER')")
+    @Secured(UserAuthority.Role.MANAGER)
     @PutMapping("/{id}")
     @Transactional
     public CourseResponseDto update(@PathVariable Long id, @RequestBody CourseRequestDto requestDto) {
