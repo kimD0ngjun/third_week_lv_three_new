@@ -1,5 +1,6 @@
 package com.jun.newacademy.entity.course;
 
+import com.jun.newacademy.entity.instructor.Instructor;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,8 @@ public class Course extends CourseTimestamped {
 
     @Column(nullable = false)
     private String category;
+
+    @ManyToOne
+    @JoinColumn(name = "instructor_id", referencedColumnName = "instructor_id", nullable = false)
+    private Instructor instructor;
 }
