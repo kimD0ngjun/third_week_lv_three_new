@@ -34,7 +34,7 @@
 ### ERD
 <br />
 <div align="center">
-  <img width="70%" src="https://github.com/kimD0ngjun/third_week_lv_three_new/blob/main/docs/UCD.png" alt="ERD">
+  <img width="70%" src="https://github.com/kimD0ngjun/third_week_lv_three_new/blob/main/docs/ERD.png" alt="ERD">
 </div>
 <br /><br />
 
