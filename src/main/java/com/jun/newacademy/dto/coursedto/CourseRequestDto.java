@@ -8,4 +8,5 @@ public class CourseRequestDto {
     private String price;
     private String syllabus;
     private String category;
+    private Long instructorId;
 }

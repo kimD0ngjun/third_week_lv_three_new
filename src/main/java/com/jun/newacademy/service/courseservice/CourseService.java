@@ -13,7 +13,7 @@ public interface CourseService {
     CourseResponseDto findById(Long id);
 
     // 강의 수정
-    CourseResponseDto update(Long id);
+    CourseResponseDto update(Long id, CourseRequestDto requestDto);
 
     // 강의 카테고리별 조회
     List<CourseResponseDto> findByCategory(String category);
