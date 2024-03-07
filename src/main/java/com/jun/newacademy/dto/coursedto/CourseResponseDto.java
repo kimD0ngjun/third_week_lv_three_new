@@ -24,7 +24,7 @@ public class CourseResponseDto {
         courseDTO.setTitle(course.getTitle());
         courseDTO.setPrice(course.getPrice());
         courseDTO.setSyllabus(course.getSyllabus());
-        courseDTO.setCategory(course.getCategory());
+        courseDTO.setCategory(course.getCategory().toString());
         courseDTO.setInstructorId(course.getInstructor().getId()); // 외래키인 instructorId 설정
         courseDTO.setRegistration(course.getCreatedAt().toString()); // timestamped 필드인 registration 설정
 
