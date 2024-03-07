@@ -43,7 +43,7 @@ public class InstructorServiceImpl implements InstructorService {
     public InstructorResponseDto update(Long id, InstructorRequestDto requestDto) {
         Optional<Instructor> instructorOptional = instructorRepository.findById(id);
 
-        String name = requestDto.getName();
+//        String name = requestDto.getName();
         String career = requestDto.getCareer();
         String company = requestDto.getCompany();
         String phone = requestDto.getPhone();
@@ -52,7 +52,7 @@ public class InstructorServiceImpl implements InstructorService {
         if (instructorOptional.isPresent()) {
             Instructor instructor = instructorOptional.get();
 
-            instructor.setName(name);
+//            instructor.setName(name);
             instructor.setCareer(career);
             instructor.setCompany(company);
             instructor.setPhone(phone);
