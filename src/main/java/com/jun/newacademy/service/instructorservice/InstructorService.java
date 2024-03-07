@@ -1,7 +1,7 @@
 package com.jun.newacademy.service.instructorservice;
 
-import com.jun.newacademy.dto.instructordto.InstructorRequestDto;
-import com.jun.newacademy.dto.instructordto.InstructorResponseDto;
+import com.jun.newacademy.model.dto.instructordto.InstructorRequestDto;
+import com.jun.newacademy.model.dto.instructordto.InstructorResponseDto;
 
 public interface InstructorService {
     // 등록

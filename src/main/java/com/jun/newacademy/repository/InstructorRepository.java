@@ -1,6 +1,6 @@
 package com.jun.newacademy.repository;
 
-import com.jun.newacademy.entity.instructor.Instructor;
+import com.jun.newacademy.model.entity.instructor.Instructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

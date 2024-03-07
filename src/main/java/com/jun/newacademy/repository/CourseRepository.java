@@ -1,6 +1,6 @@
 package com.jun.newacademy.repository;
 
-import com.jun.newacademy.entity.course.Course;
+import com.jun.newacademy.model.entity.course.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,8 +1,8 @@
 package com.jun.newacademy.controller;
 
-import com.jun.newacademy.dto.instructordto.InstructorRequestDto;
-import com.jun.newacademy.dto.instructordto.InstructorResponseDto;
-import com.jun.newacademy.entity.user.UserAuthority;
+import com.jun.newacademy.model.dto.instructordto.InstructorRequestDto;
+import com.jun.newacademy.model.dto.instructordto.InstructorResponseDto;
+import com.jun.newacademy.model.entity.user.UserAuthority;
 import com.jun.newacademy.service.instructorservice.InstructorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;

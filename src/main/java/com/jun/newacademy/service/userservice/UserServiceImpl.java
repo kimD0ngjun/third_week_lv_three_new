@@ -1,8 +1,8 @@
 package com.jun.newacademy.service.userservice;
 
-import com.jun.newacademy.dto.userdto.UserSignUpRequestDto;
-import com.jun.newacademy.entity.user.User;
-import com.jun.newacademy.entity.user.UserAuthority;
+import com.jun.newacademy.model.dto.userdto.UserSignUpRequestDto;
+import com.jun.newacademy.model.entity.user.User;
+import com.jun.newacademy.model.entity.user.UserAuthority;
 import com.jun.newacademy.repository.UserRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

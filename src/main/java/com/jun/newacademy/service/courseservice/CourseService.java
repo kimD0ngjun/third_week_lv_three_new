@@ -1,7 +1,7 @@
 package com.jun.newacademy.service.courseservice;
 
-import com.jun.newacademy.dto.coursedto.CourseRequestDto;
-import com.jun.newacademy.dto.coursedto.CourseResponseDto;
+import com.jun.newacademy.model.dto.coursedto.CourseRequestDto;
+import com.jun.newacademy.model.dto.coursedto.CourseResponseDto;
 
 import java.util.List;
 

@@ -1,11 +1,10 @@
 package com.jun.newacademy.service.courseservice;
 
-import com.jun.newacademy.dto.coursedto.CourseRequestDto;
-import com.jun.newacademy.dto.coursedto.CourseResponseDto;
-import com.jun.newacademy.entity.course.Course;
-import com.jun.newacademy.entity.course.CourseCategory;
-import com.jun.newacademy.entity.instructor.Instructor;
-import com.jun.newacademy.entity.user.UserAuthority;
+import com.jun.newacademy.model.dto.coursedto.CourseRequestDto;
+import com.jun.newacademy.model.dto.coursedto.CourseResponseDto;
+import com.jun.newacademy.model.entity.course.Course;
+import com.jun.newacademy.model.entity.course.CourseCategory;
+import com.jun.newacademy.model.entity.instructor.Instructor;
 import com.jun.newacademy.repository.CourseRepository;
 import com.jun.newacademy.repository.InstructorRepository;
 import lombok.RequiredArgsConstructor;

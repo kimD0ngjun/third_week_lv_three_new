@@ -1,12 +1,11 @@
 package com.jun.newacademy.controller;
 
-import com.jun.newacademy.dto.coursedto.CourseRequestDto;
-import com.jun.newacademy.dto.coursedto.CourseResponseDto;
-import com.jun.newacademy.entity.user.UserAuthority;
+import com.jun.newacademy.model.dto.coursedto.CourseRequestDto;
+import com.jun.newacademy.model.dto.coursedto.CourseResponseDto;
+import com.jun.newacademy.model.entity.user.UserAuthority;
 import com.jun.newacademy.service.courseservice.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 

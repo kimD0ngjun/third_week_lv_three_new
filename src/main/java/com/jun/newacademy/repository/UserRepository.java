@@ -1,6 +1,6 @@
 package com.jun.newacademy.repository;
 
-import com.jun.newacademy.entity.user.User;
+import com.jun.newacademy.model.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

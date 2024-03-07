@@ -1,6 +1,6 @@
 package com.jun.newacademy.controller;
 
-import com.jun.newacademy.dto.userdto.UserSignUpRequestDto;
+import com.jun.newacademy.model.dto.userdto.UserSignUpRequestDto;
 import com.jun.newacademy.service.userservice.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
