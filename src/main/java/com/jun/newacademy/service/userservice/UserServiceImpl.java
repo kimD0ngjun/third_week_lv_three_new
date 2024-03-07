@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
         String password = passwordEncoder.encode(requestDto.getPassword()); // 암호화 설정
         String department = requestDto.getDepartment();
 
-        // 권한 설정
         UserAuthority authority;
         if (department.equals("커리큘럼") || department.equals("개발")) {
             authority = UserAuthority.MANAGER;

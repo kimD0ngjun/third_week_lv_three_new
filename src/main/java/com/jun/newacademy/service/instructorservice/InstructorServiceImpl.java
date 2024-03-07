@@ -35,7 +35,7 @@ public class InstructorServiceImpl implements InstructorService {
             return new InstructorResponseDto(instructor);
         }
 
-        return null;
+        throw new IllegalArgumentException("유효하지 않은 강사 ID입니다.");
     }
 
     @Override
@@ -61,6 +61,6 @@ public class InstructorServiceImpl implements InstructorService {
             return new InstructorResponseDto(instructor);
         }
 
-        return null;
+        throw new IllegalArgumentException("잘못된 수정 정보입니다.");
     }
 }
