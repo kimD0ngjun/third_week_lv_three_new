@@ -24,7 +24,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     // 강의 다시 한번 더 확인
 
     private final JwtUtil jwtUtil;
-    private final UserDetailsServiceImpl userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService; // 사용자가 있는지 확인
 
     public JwtAuthorizationFilter(JwtUtil jwtUtil, UserDetailsServiceImpl userDetailsService) {
         this.jwtUtil = jwtUtil;
@@ -33,29 +33,33 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        // HttpServletRequest, HttpServletResponse를 받을 수 있는 이유는 클래스가 OncePerRequestFilter 상속받아서
 
-        String token = jwtUtil.getTokenFromRequest(request);
+        String token = jwtUtil.getTokenFromRequest(request); // 쿠키에서 존맛탱 가지고 오기(없으면 뭐.. null일 테니)
 
+        // 토큰을 갖고 있니?
         if (StringUtils.hasText(token)) {
             token = jwtUtil.substringToken(token); // 존맛탱 앞글자 싹둑
             log.info(token);
 
+            // 앞의 "Bearer " 떼어낸 토큰의 유효성 검증(안 유효한 거니?)
             if (!jwtUtil.validateToken(token)) {
                 log.error("Token Error");
                 return;
             }
 
-            Claims info = jwtUtil.getUserInfoFromToken(token);
+            Claims info = jwtUtil.getUserInfoFromToken(token); // 토큰에서 사용자 정보 뽑아오기
 
             try {
-                setAuthentication(info.getSubject());
+                setAuthentication(info.getSubject()); // 토큰에서 뽑은 사용자 정보로 인증 시도
             } catch (Exception e) {
                 log.error(e.getMessage());
                 return;
             }
         }
 
-        filterChain.doFilter(request, response);
+        // 최종적으로 SecurityContextHolder -> SecurityContext -> Authentication 인증 객체 -> Principal, Credentials, Authorities 담겨진 내용
+        filterChain.doFilter(request, response); // 그 내용 들고 다음 필터로 넘어가세용
     }
 
     // 인증 처리
@@ -70,7 +74,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     // 인증 객체 생성
     private Authentication createAuthentication(String username) { // 아까 그 Authentication 인증 객체 만듦
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities()); // UPAT 생성
         // Authentication 인증 객체에 넣는 Principal, Credentials, Authorities
         // Principal : 보통 사용자 식별값(UserDetails의 인스턴스를 집어넣음)
         // Credentials : 주로 비밀번호, 대부분 사용자 인증 후에 비움
