@@ -81,3 +81,6 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         // Authorities : 사용자 부여 권한을 GrantedAuthority로 추상화해서 넣음(권한에 따른 요청 허가 처리 용이를 위해서)
     }
 }
+
+// 시큐리티 컨텍스트 홀더에 담긴 내용들은 컨트롤러의 매개값 등에서 @AuthenticationPrincipal 어노테이션 등으로 활용 가능
+// 예를 들면 Model 인스턴스에게 속성을 부여해준다는 등....
