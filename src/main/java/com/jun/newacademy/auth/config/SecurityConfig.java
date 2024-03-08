@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -63,6 +64,12 @@ public class SecurityConfig { // 인증 인가를 위한 기본 세팅
                         .requestMatchers("/api/users/signup").permitAll() // 회원가입만 바로 통과
                         .anyRequest().authenticated() // 그 외 모든 요청 인증처리 요구
         );
+
+        // 시큐리티는 디폴트 로그인과 관련된 세팅이 제공된다.
+        // 대표적인 것이 form 로그인, 그리고 로그인 url 자동 세팅(/login)
+        // 대신 form 로그인 역시 비밀번호 암호화 커스텀 설정과 충돌할 소지가 다분함
+        // 여담으로 서버 부팅할 때, form 로그인 id : user + pw : 랜덤 일련번호 를 제공한다.
+//        http.formLogin(Customizer.withDefaults());
 
         // 필터 관리
         http.addFilterBefore(jwtAuthorizationFilter(), JwtAuthenticationFilter.class); // 인가 처리 필터
