@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService { // 얘의 목적은 입력된 username(여기서는 이메일)로 DB를 조회해서 일치하는 엔티티를 반환하기 위함
 
     private final UserRepository userRepository;
 
