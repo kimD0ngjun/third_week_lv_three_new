@@ -60,7 +60,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     // 인증 처리
     public void setAuthentication(String username) {
-        SecurityContext context = SecurityContextHolder.createEmptyContext(); // 얘가 SecurityContextHolde를 통해 빈 SecurityContext 생
+        SecurityContext context = SecurityContextHolder.createEmptyContext(); // 얘가 SecurityContextHolde를 통해 빈 SecurityContext 생성
         Authentication authentication = createAuthentication(username); // 그리고 Authentication 인증 객체 만듦
         context.setAuthentication(authentication); // 그 인증 객체를 SecurityContext에 담는 거임
 
@@ -68,8 +68,12 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     }
 
     // 인증 객체 생성
-    private Authentication createAuthentication(String username) {
+    private Authentication createAuthentication(String username) { // 아까 그 Authentication 인증 객체 만듦
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        // Authentication 인증 객체에 넣는 Principal, Credentials, Authorities
+        // Principal : 보통 사용자 식별값(UserDetails의 인스턴스를 집어넣음)
+        // Credentials : 주로 비밀번호, 대부분 사용자 인증 후에 비움
+        // Authorities : 사용자 부여 권한을 GrantedAuthority로 추상화해서 넣음(권한에 따른 요청 허가 처리 용이를 위해서)
     }
 }

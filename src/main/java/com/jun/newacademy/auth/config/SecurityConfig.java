@@ -84,7 +84,7 @@ public class SecurityConfig { // 인증 인가를 위한 기본 세팅
 
         // * SecurityContextHolder 내부에 SecurityContext가 있음
         // * SecurityContext 내부에 Authentication이 담김
-        // * Authentication 내부에는 username(Principal), password(Credentials), token(Authorities)이 담김
+        // * Authentication 내부에는 username(Principal), password(Credentials), authority(Authorities)이 담김
 
         return http.build();
     }
