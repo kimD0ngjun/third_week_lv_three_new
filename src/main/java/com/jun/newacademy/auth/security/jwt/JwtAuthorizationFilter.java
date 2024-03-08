@@ -60,11 +60,11 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     // 인증 처리
     public void setAuthentication(String username) {
-        SecurityContext context = SecurityContextHolder.createEmptyContext();
-        Authentication authentication = createAuthentication(username);
-        context.setAuthentication(authentication);
+        SecurityContext context = SecurityContextHolder.createEmptyContext(); // 얘가 SecurityContextHolde를 통해 빈 SecurityContext 생
+        Authentication authentication = createAuthentication(username); // 그리고 Authentication 인증 객체 만듦
+        context.setAuthentication(authentication); // 그 인증 객체를 SecurityContext에 담는 거임
 
-        SecurityContextHolder.setContext(context);
+        SecurityContextHolder.setContext(context); // 최종 세팅
     }
 
     // 인증 객체 생성
