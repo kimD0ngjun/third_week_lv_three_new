@@ -21,4 +21,8 @@ public class UserController {
     public ResponseEntity<String> signUp(@RequestBody @Valid UserSignUpRequestDto requestDto) {
         return userService.signUp(requestDto);
     }
+
+    // * Bean Validation 기능
+    // 컨트롤러의 요청 dto 앞에 @Valid 어노테이션 할당해야 가능
+    // 유효성 어노테이션 적극적으로 잘 써먹어서 활용해보자
 }
