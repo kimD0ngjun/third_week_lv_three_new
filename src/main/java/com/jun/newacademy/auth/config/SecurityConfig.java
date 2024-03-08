@@ -75,6 +75,12 @@ public class SecurityConfig { // 인증 인가를 위한 기본 세팅
         // 필터 관리
         http.addFilterBefore(jwtAuthorizationFilter(), JwtAuthenticationFilter.class); // 인가 처리 필터
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class); // 인증(+ 로그인) 처리 필터
+        // 시큐리티 필터체인 중에 UsernamePasswordAuthenticationFilter가 존재함(스프링의 뭐.. 엄청 이름 긴 필터 상속 구현)
+        // 아까의 디폴트 폼 로그인에서 아이디와 비번을 넣으면 인증 처리하는 역할을 맡는 필터
+        // 1. 사용자가 아이디와 비번 제공
+        // 2. UPAF에서 UsernamePasswordAuthenticationToken 발급
+        // 3. 그 토큰을 AuthenticationManager에게 넘기고 인증 시도
+        // 4. 실패하면 실패한 거고(SCH 비움)... 성공하면 SecurityContextHolder에 인증 처리를 저장
 
         return http.build();
     }
