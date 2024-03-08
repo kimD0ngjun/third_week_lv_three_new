@@ -70,6 +70,7 @@ public class SecurityConfig { // 인증 인가를 위한 기본 세팅
         // 대신 form 로그인 역시 비밀번호 암호화 커스텀 설정과 충돌할 소지가 다분함
         // 여담으로 서버 부팅할 때, form 로그인 id : user + pw : 랜덤 일련번호 를 제공한다.
 //        http.formLogin(Customizer.withDefaults());
+        // 로그인 처리가 되지 않은 상태(시큐리티의 세션id가 저장되지 않은 상태로)로 요청을 하면, 로그인 페이지를 반환하는 게 디폴트 세팅
 
         // 필터 관리
         http.addFilterBefore(jwtAuthorizationFilter(), JwtAuthenticationFilter.class); // 인가 처리 필터
@@ -78,3 +79,9 @@ public class SecurityConfig { // 인증 인가를 위한 기본 세팅
         return http.build();
     }
 }
+
+// 스프링에서의 모든 호출은 DispatcherServlet을 통과하게 됨
+// 이후 각 요청을 담당하는 컨트롤러로 분배됨
+// 이떄 각 요청에 대해서 공통적으로 처리해야 할 필요가 있을 때(예를 들면 인증.. 인가..) DispatcherServlet 이전 단계의 작업이 필요함
+// 그것을 맡을 수 있는 게 필터(최상단에서 마주하는 거 생각하기)
+// 근데 시큐리티의 필터는 FilterChainProxy를 사용해서 구현하는데, 간단하게 수많은 필터 사이에 끼어있는 애들이 시큐리티 필터 체인을 생성한다고 생각하기
