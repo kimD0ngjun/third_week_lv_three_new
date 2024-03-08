@@ -82,6 +82,10 @@ public class SecurityConfig { // 인증 인가를 위한 기본 세팅
         // 3. 그 토큰을 AuthenticationManager에게 넘기고 인증 시도
         // 4. 실패하면 실패한 거고(SCH 비움)... 성공하면 SecurityContextHolder에 인증 처리를 저장
 
+        // * SecurityContextHolder 내부에 SecurityContext가 있음
+        // * SecurityContext 내부에 Authentication이 담김
+        // * Authentication 내부에는 username(Principal), password(Credentials), token(Authorities)이 담김
+
         return http.build();
     }
 }
