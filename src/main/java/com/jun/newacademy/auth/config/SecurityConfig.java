@@ -93,6 +93,14 @@ public class SecurityConfig { // 인증 인가를 위한 기본 세팅
         // * SecurityContext 내부에 Authentication이 담김
         // * Authentication 내부에는 username(Principal), password(Credentials), authority(Authorities)이 담김
 
+
+        // *** 접근 불가에 대한 설정
+        // secured 어노테이션으로 권한별로 접근 차등을 뒀을 때, 튕겨져 나올 경의 접근 불가 페이지
+//        http.exceptionHandling((exceptionHandling) -> {
+//            exceptionHandling.accessDeniedPage("/forbidden.html"); // static 페이지(해당 URL 및 이름) 반환
+//        });
+
+
         return http.build();
     }
 }
