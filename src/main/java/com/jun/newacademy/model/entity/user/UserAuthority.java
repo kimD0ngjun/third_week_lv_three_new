@@ -15,7 +15,8 @@ public enum UserAuthority {
     }
 
     public static class Role {
-        public static final String MANAGER = "MANAGER";
-        public static final String STAFF = "STAFF";
+        // 권한 이름 규칙은 "ROLE_"로 시작해야 함
+        public static final String MANAGER = "ROLE_MANAGER";
+        public static final String STAFF = "ROLE_STAFF";
     }
 }

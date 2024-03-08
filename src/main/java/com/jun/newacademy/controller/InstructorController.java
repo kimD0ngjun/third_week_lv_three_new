@@ -27,7 +27,7 @@ public class InstructorController {
         return instructorService.find(id);
     }
 
-    @Secured(UserAuthority.Role.MANAGER)
+    @Secured(UserAuthority.Role.MANAGER) // 권한 이름 규칙은 권한 열거형에서 "ROLE_"로 시작해야 함
     @PutMapping("/{id}")
     @Transactional
     public InstructorResponseDto update(@PathVariable Long id, @RequestBody InstructorRequestDto requestDto) {
