@@ -16,11 +16,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration
-@EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true)
+// 커스텀 필터와 시큐리티는 기왕이면 공존시키지 말 것(충돌 우려 열심히 겪어봤으니...)
+@Configuration // 빈 등록 수동 등록
+@EnableWebSecurity // 시큐리티 사용하겠다는 의미 꼭 잊지 말 것...
+@EnableMethodSecurity(securedEnabled = true) // securedEnabled는 권한 당 접근 여부 부(secured 어노테이션을 위해서)
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfig { // 인증 인가를 위한 기본 세팅
 
     private final JwtUtil jwtUtil;
     private final
@@ -45,10 +46,10 @@ public class SecurityConfig {
         return new JwtAuthorizationFilter(jwtUtil, userDetailsService);
     }
 
-    @Bean
+    @Bean // 시큐리티에 있어 가장 기본적인 설정 담당(특히 URL 경로별 접근 여부)
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // CSRF 설정
-        http.csrf((csrf) -> csrf.disable());
+        http.csrf((csrf) -> csrf.disable()); // 크로스 사이트 요청 위조
 
         // 존맛탱 채택을 위한 세션 무상태성화
         http.sessionManagement((sessionManagement) ->
@@ -57,9 +58,10 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests((authorizeHttpRequests) ->
                 authorizeHttpRequests
+                        // 풀스택일 때 의미있을...
 //                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용 설정
                         .requestMatchers("/api/users/signup").permitAll() // 회원가입만 바로 통과
-                        .anyRequest().authenticated() // 그 외 모든 요청 인증처리
+                        .anyRequest().authenticated() // 그 외 모든 요청 인증처리 요구
         );
 
         // 필터 관리
