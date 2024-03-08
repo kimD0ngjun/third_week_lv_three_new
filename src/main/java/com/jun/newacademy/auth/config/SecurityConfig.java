@@ -54,7 +54,7 @@ public class SecurityConfig { // 인증 인가를 위한 기본 세팅
         // CSRF 설정
         http.csrf((csrf) -> csrf.disable()); // 크로스 사이트 요청 위조
 
-        // 존맛탱 채택을 위한 세션 무상태성화
+        // 존맛탱 채택을 위한 세션 무상태성화(시큐리티는 세션이 디폴트 세팅)
         http.sessionManagement((sessionManagement) ->
                 sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         );
