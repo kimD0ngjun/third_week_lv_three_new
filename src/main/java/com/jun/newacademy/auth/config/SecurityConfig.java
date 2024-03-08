@@ -25,9 +25,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig { // 인증 인가를 위한 기본 세팅
 
     private final JwtUtil jwtUtil;
-    private final
-    UserDetailsServiceImpl userDetailsService;
-    private final AuthenticationConfiguration authenticationConfiguration; // Authentication 매니저 만들거임 이거로
+    private final UserDetailsServiceImpl userDetailsService;
+
+    // Authentication 매니저 만들거임 이거로
+    // 왜냐하면 곧바로 Authentication Manager를 바로 가져올 수 없어서
+    private final AuthenticationConfiguration authenticationConfiguration;
 
     // 인증매니저 생성 메서드
     @Bean
@@ -72,9 +74,14 @@ public class SecurityConfig { // 인증 인가를 위한 기본 세팅
 //        http.formLogin(Customizer.withDefaults());
         // 로그인 처리가 되지 않은 상태(시큐리티의 세션id가 저장되지 않은 상태로)로 요청을 하면, 로그인 페이지를 반환하는 게 디폴트 세팅
 
-        // 필터 관리
+        // 필터를 만들기만 하면 안 되고, 이제 시큐리티 필터에 끼워넣어야 함
+        // 로그인 통한 토큰 발급 전에 우선 회원이 토큰을 담아 요청 보냈는지 확인이 우선이어서
+        // 인가 필터를 인증 필터 앞에 넣어줌
         http.addFilterBefore(jwtAuthorizationFilter(), JwtAuthenticationFilter.class); // 인가 처리 필터
+
+        // UPAF 전에 입력받은 사용자 아이디랑 비번 바탕으로 인증하고 토큰 발급하고 담아주는 처리해야 함
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class); // 인증(+ 로그인) 처리 필터
+
         // 시큐리티 필터체인 중에 UsernamePasswordAuthenticationFilter가 존재함(스프링의 뭐.. 엄청 이름 긴 필터 상속 구현)
         // 아까의 디폴트 폼 로그인에서 아이디와 비번을 넣으면 인증 처리하는 역할을 맡는 필터
         // 1. 사용자가 아이디와 비번 제공
